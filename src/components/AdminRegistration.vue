@@ -1,15 +1,17 @@
 <script setup>
 import { lemmyClient } from '@/services/lemmyService';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 
-// lemmyClient.register({
-//     username: ""
-// });
+//TODO: form validations and error handling
+// TODO: implemennt extra fields
 const username = ref('')
 const password = ref('')
 const vpassword = ref('')
 const answer = ref('')
+
+const router = useRouter()
 
 async function submit_admin_registration() {
     const res = await lemmyClient.register({username: username.value,
@@ -19,6 +21,18 @@ async function submit_admin_registration() {
     });
 
     console.log(res)
+
+    // in case I need the token
+    localStorage.setItem("lemmy_token", res.jwt);
+
+    lemmyClient.setHeaders({
+        Authorization: `Bearer ${res.jwt}`,
+    });
+
+    
+
+    router.push("/SiteSetup")
+
 
 };
 
