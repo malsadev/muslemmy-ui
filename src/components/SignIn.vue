@@ -1,12 +1,15 @@
 <script setup>
 import { lemmyClient } from '@/services/lemmyService';
 import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 
 //TODO: form validations and error handling
 // TODO: implemennt extra fields
 const username = ref('')
 const password = ref('')
+const router = useRouter()
+const route = useRoute()
 
 
 async function submit_sign_in() {
@@ -25,6 +28,11 @@ async function submit_sign_in() {
     });
 
     console.log(res)
+
+    // Redirect to the original page or default to '/'
+    console.log(route)
+    const redirectPath = route.query.redirect || '/';
+    router.push(redirectPath);
 
 };
 
