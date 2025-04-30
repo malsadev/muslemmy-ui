@@ -9,11 +9,22 @@
         <RouterLink to="/CreateCommunity">Create Community</RouterLink>
         <!-- Only when Admin is signed in -->
         <RouterLink to="/AdminDashboard">Setting</RouterLink>
-        <label for="dropdown">Username</label>
-        <select id="dropdown" name="dropdown">
-            <option value="option1">Settings</option>
-            <option value="option2">Log out</option>
-        </select>
+        <div class="drop-down">
+            <button>username</button>
+            <div class="menue">
+                <RouterLink to="/users/username">
+                    <option>Profile</option>
+                </RouterLink>
+                <RouterLink to="/settings">
+                    <option>Settings</option>
+                </RouterLink>
+                <RouterLink to="/logout">
+                    <option>Log out</option>
+                </RouterLink>
+
+            </div>
+
+        </div>
 
     </nav>
     <main>
