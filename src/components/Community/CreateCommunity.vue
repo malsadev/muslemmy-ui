@@ -18,7 +18,7 @@ async function submit_community() {
 </script>
 
 <template>
-    <form @submit.prevent>
+    <form @submit.prevent="submit_community">
         <label>Community Name</label>
         <input v-model="community_name">
         <label>Community Title</label>
