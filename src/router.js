@@ -8,6 +8,7 @@ import UserProfile from './components/UserProfile.vue'
 import HomeFeed from './components/HomeFeed.vue'
 import CreatePost from './components/Post/CreatePost.vue'
 import CreateCommunity from './components/Community/CreateCommunity.vue'
+import Communities from './components/Community/Communities.vue'
 
 // https://router.vuejs.org/guide/advanced/navigation-guards.html#Per-Route-Guard
 // redirects
@@ -24,7 +25,8 @@ const routes = [
     meta: {requriesAuth: true}, },
   { path: '/CreateCommunity',
     component: CreateCommunity,
-    meta: {requriesAuth: true}, }
+    meta: {requriesAuth: true}, },
+  { path: '/Communities', component: Communities },
 ]
 
 const router = createRouter({
