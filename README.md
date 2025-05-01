@@ -1,4 +1,4 @@
-## What is it Lemmy?
+## What is Lemmy?
 
 The short version is, that Lemmy is similar to Reddit. The main difference is that Lemmy is Open-Source and Federated. This means that there is no single huge "Lemmy Server" but many smaller "instances" of Lemmy hosted by different people. These instances can communicate with each other, so you can follow people on other instances and see their posts and comments.
 
