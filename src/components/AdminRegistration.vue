@@ -1,5 +1,6 @@
 <script setup>
 import { lemmyClient } from '@/services/lemmyService';
+import { UserService } from '@/services/UserService';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -22,12 +23,7 @@ async function submit_admin_registration() {
 
     console.log(res)
 
-    // in case I need the token
-    localStorage.setItem("lemmy_token", res.jwt);
-
-    lemmyClient.setHeaders({
-        Authorization: `Bearer ${res.jwt}`,
-    });
+    UserService.Instance.login(res);
 
     
 
