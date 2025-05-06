@@ -9,6 +9,7 @@ import HomeFeed from './components/HomeFeed.vue'
 import CreatePost from './components/Post/CreatePost.vue'
 import CreateCommunity from './components/Community/CreateCommunity.vue'
 import Communities from './components/Community/Communities.vue'
+import { UserService } from './services/UserService'
 
 // https://router.vuejs.org/guide/advanced/navigation-guards.html#Per-Route-Guard
 // redirects
@@ -35,9 +36,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  const token = localStorage.getItem("lemmy_token")
+  
 
-  if (to.meta.requriesAuth && !token) {
+  if (to.meta.requriesAuth && !UserService.Instance.auth()) {
     return {  
       path: '/SignIn',
       query: { redirect: to.fullPath }
