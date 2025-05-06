@@ -1,5 +1,6 @@
 <script setup>
 import { lemmyClient } from '@/services/lemmyService';
+import { UserService } from '@/services/UserService';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -19,20 +20,24 @@ async function submit_sign_in() {
         password: password.value,
     });
 
+    UserService.Instance.login(res)
+    const site  = await lemmyClient.getSite();
+    console.log(site);
 
-    // in case I need the token
-    localStorage.setItem("lemmy_token", res.jwt);
+    // if (site.state === "success") {
+        console.log("site state success");
+        console.log(await lemmyClient.getMyUser());
+        UserService.Instance.userInfo.value = await lemmyClient.getMyUser();
+        console.log(UserService.Instance.userInfo.value);
+    // }
 
-    lemmyClient.setHeaders({
-        Authorization: `Bearer ${res.jwt}`,
-    });
-
-    console.log(res)
+    console.log(res);
 
     // Redirect to the original page or default to '/'
     console.log(route)
     const redirectPath = route.query.redirect || '/';
     router.push(redirectPath);
+    console.log("resdired")
 
 };
 
