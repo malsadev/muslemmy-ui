@@ -7,7 +7,6 @@ const community_id = ref('');
 const post_body = ref('');
 
 async function submit_post() {
-    console.log(localStorage.getItem("lemmy_token"))
     const res = await lemmyClient.createPost({
         name: post_name.value,
         community_id: Number(community_id.value),
